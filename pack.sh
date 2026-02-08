@@ -7,8 +7,8 @@ VERSION=$(grep '"version"' manifest.json | sed 's/.*"version": *"\([^"]*\)".*/\1
 # 输出文件名
 OUTPUT="Better-Tab-Split-v${VERSION}.zip"
 
-# 删除旧的 zip 文件
-rm -f "$OUTPUT"
+# 删除所有旧的 zip 文件
+rm -f Better-Tab-Split-v*.zip
 
 # 打包（排除不需要的文件）
 zip -r "$OUTPUT" \
