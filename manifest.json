@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Better Tab Split",
+  "version": "1.0.0",
+  "description": "Open links in the other side of Split View. 在 Split View 中点击链接时，在另一侧打开。",
+  "minimum_chrome_version": "142",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon-disabled-16.png",
+      "32": "icons/icon-disabled-32.png",
+      "48": "icons/icon-disabled-48.png",
+      "128": "icons/icon-disabled-128.png"
+    },
+    "default_title": "Better Tab Split (未启用 Split View)"
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAj7/JmB1+6hyudGhUn13hH+jEL+DO/p1ShaiBStF3w7chDtrtXlGMYn6PQ49hbsYH+GRqQ4xe2kk/RXUHJ/bFos10bzrj/uM6VWJVrZND2BzyRKKiB/Gg6zPEg12K+Rm89fF4h6BTmOsC39RaxKVz/Nr21Fp+O4efy/OV+ynczvM+w2uBtav0kcix49F5bHmmbNltuoOK9C3OfhGCd0oVJ8cMy7ACiM1OoHiSf54V6vQ0SbJQDqOxbIlQj+Q559S677pTYERLyxtZu4iPeXFduyCblOwypK3NLAiQdMgYbwoApn2J3LXVu31reIr87tk8AVsL9u0+pICSrqn75AHO3QIDAQAB"
+}
