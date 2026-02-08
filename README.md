@@ -4,7 +4,7 @@ A Chrome extension that opens links in the opposite pane when in Split View, ins
 
 一个 Chrome 扩展，让你在拆分视图（一个 tab 左右分屏双开页面）中点击链接时，在另一侧打开而不是新标签页。
 
-![](store_assets/promo_small_440x280.png)
+![](store_assets/promo_small_440x280.jpeg)
 
 ## Installation
 
