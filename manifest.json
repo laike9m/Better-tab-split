@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Better Tab Split",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Open links in the other side of Split View. 在 Split View 中点击链接时，在另一侧打开。",
   "minimum_chrome_version": "142",
   "permissions": [
