@@ -6,6 +6,10 @@ A Chrome extension that opens links in the opposite pane when in Split View, ins
 
 ![](store_assets/promo_small_440x280.jpeg)
 
+## Demo
+
+https://github.com/user-attachments/assets/a27aa07d-b930-4f11-8adf-ddc5a723a24b
+
 ## Installation
 
 [![Available in the Chrome Web Store](docs/chrome_web_store_badge.png)](https://chromewebstore.google.com/detail/better-tab-split/epcgalejpnmaoiccdkocnkolochbgegg)
