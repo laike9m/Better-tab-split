@@ -31,16 +31,77 @@
     return null;
   }
 
-  // 检查 URL 是否有效
+  // 检查 URL 是否有效（用于导航）
   function isValidUrl(url) {
     if (!url) return false;
-    return url.startsWith('http://') || url.startsWith('https://');
+    // 必须是 http 或 https 协议
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      return false;
+    }
+    // 排除只有锚点的链接（如 https://example.com/#）
+    try {
+      const urlObj = new URL(url);
+      const currentUrl = new URL(window.location.href);
+      // 如果只是锚点不同，不算有效的导航链接
+      if (urlObj.origin === currentUrl.origin &&
+        urlObj.pathname === currentUrl.pathname &&
+        urlObj.search === currentUrl.search) {
+        return false;
+      }
+    } catch (e) {
+      return false;
+    }
+    return true;
+  }
+
+  // 检查链接是否是 UI 控件（不应该被拦截）
+  function isUIControlLink(element) {
+    if (!element || element.isDataAttr) return false;
+
+    // 检查常见的 UI 控件属性（Bootstrap, AdminLTE 等框架使用）
+    const uiAttributes = [
+      'data-widget',      // AdminLTE 侧边栏控件
+      'data-toggle',      // Bootstrap 切换控件
+      'data-bs-toggle',   // Bootstrap 5 切换控件
+      'data-action',      // 通用操作属性
+      'data-slide',       // 轮播控件
+      'data-bs-slide',    // Bootstrap 5 轮播
+      'data-dismiss',     // 关闭按钮
+      'data-bs-dismiss',  // Bootstrap 5 关闭按钮
+      'data-target',      // 目标元素（通常用于模态框等）
+      'data-bs-target',   // Bootstrap 5 目标元素
+    ];
+
+    for (const attr of uiAttributes) {
+      if (element.hasAttribute(attr)) {
+        return true;
+      }
+    }
+
+    // 检查 role 属性
+    const role = element.getAttribute('role');
+    if (role && ['button', 'tab', 'menuitem', 'switch'].includes(role)) {
+      return true;
+    }
+
+    // 检查 href 是否是 javascript: 协议或只是 #
+    const href = element.getAttribute('href');
+    if (href === '#' || href === '' || (href && href.startsWith('javascript:'))) {
+      return true;
+    }
+
+    return false;
   }
 
   // 检查是否应该拦截此事件
   function shouldIntercept(event, linkElement) {
     if (!isEnabled) return false;
     if (!linkElement) return false;
+
+    // 检查是否是 UI 控件链接（如汉堡按钮、模态框触发器等）
+    if (isUIControlLink(linkElement)) {
+      return false;
+    }
 
     const url = linkElement.href;
     if (!isValidUrl(url)) return false;
