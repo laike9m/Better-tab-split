@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Better Tab Split",
   "version": "1.1.0",
-  "description": "Open links in the other side of Split View. Auto-activates when entering Split View (configurable). 在 Split View 中点击链接时，在另一侧打开。进入分屏时自动激活（可配置）。",
+  "description": "Open links in the other side of Split View. 在 Split View 中点击链接时，在另一侧打开。",
   "minimum_chrome_version": "142",
   "permissions": [
     "activeTab",
