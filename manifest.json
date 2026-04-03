@@ -1,12 +1,13 @@
 {
   "manifest_version": 3,
   "name": "Better Tab Split",
-  "version": "1.0.2",
-  "description": "Open links in the other side of Split View. 在 Split View 中点击链接时，在另一侧打开。",
+  "version": "1.1.0",
+  "description": "Open links in the other side of Split View. Auto-activates when entering Split View (configurable). 在 Split View 中点击链接时，在另一侧打开。进入分屏时自动激活（可配置）。",
   "minimum_chrome_version": "142",
   "permissions": [
     "activeTab",
-    "scripting"
+    "scripting",
+    "storage"
   ],
   "host_permissions": [
     "<all_urls>"
@@ -22,6 +23,10 @@
       "128": "icons/icon-disabled-128.png"
     },
     "default_title": "Better Tab Split (未启用 Split View)"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
   },
   "icons": {
     "16": "icons/icon-16.png",

@@ -4,6 +4,21 @@
 // 存储每个 tab 的启用状态
 const enabledTabs = new Map();
 
+// 自动激活设置（缓存）
+let autoActivate = true;
+
+// 初始化：从 storage 读取设置
+chrome.storage.sync.get({ autoActivate: true }, (items) => {
+  autoActivate = items.autoActivate;
+});
+
+// 监听设置变化
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area === 'sync' && changes.autoActivate) {
+    autoActivate = changes.autoActivate.newValue;
+  }
+});
+
 // 图标路径
 const ICONS = {
   disabled: {
@@ -80,7 +95,12 @@ async function updateExtensionState(tabId) {
   } else {
     // 在 Split View 中 - 启用扩展
     await chrome.action.enable(tabId);
-    const isEnabled = enabledTabs.get(tabId) || false;
+
+    // 如果 tab 没有被用户手动设置过状态，根据自动激活设置决定
+    if (!enabledTabs.has(tabId)) {
+      enabledTabs.set(tabId, autoActivate);
+    }
+    const isEnabled = enabledTabs.get(tabId);
 
     if (isEnabled) {
       await chrome.action.setIcon({ tabId, path: ICONS.on });
