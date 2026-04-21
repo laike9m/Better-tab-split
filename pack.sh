@@ -15,6 +15,8 @@ zip -r "$OUTPUT" \
   manifest.json \
   background.js \
   content.js \
+  options.html \
+  options.js \
   icons/ \
   -x "*.DS_Store" \
   -x "*.git*"
